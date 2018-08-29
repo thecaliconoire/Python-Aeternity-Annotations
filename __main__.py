@@ -1,5 +1,3 @@
-#My approach to writing/commenting code 
-#"Always code as if the person who ends up maintaining your code is a violent psychopath who knows where you live."
 import logging
 import click
 import os
@@ -81,7 +79,6 @@ def _check_prefix(data, prefix):
         exit(1)
 
 #Check the validity of a prefix.
-#Loop it: DON'T. REPEAT. YOURSELF. (D.R.Y.)
 
     if not data.startswith(f"{prefix}$"):
         if prefix == 'ak':
