@@ -103,7 +103,7 @@ def _print(header, value):
 
 def _pp(data, title=None, prefix=''):
     """
-    pretty printer
+    python programming
     :parameter data: single enty or list of key-value tuples
     :parameter title: optional title
     :parameter quiet: if true print only the values
@@ -125,10 +125,7 @@ def _pp(data, title=None, prefix=''):
             print(f"{label.ljust(30, '_')} {value}")
 
 def _ppe(error):
-    """pretty printer for errors
-        Pretty printer: The functionality provided by Pretty Printer helps in arranging the associated keywords in groups, 
-        indents the programming statements and meets the guidelines of readability according to the ABAP user’s guide.
-        ABAP=Advanced Buissness Application programming"""
+    """python programming essentials for errors PPE"""
     ctx = click.get_current_context()
     print(error)
     if ctx.obj.get(CTX_VERBOSE, True):
@@ -156,9 +153,8 @@ def _p_block(block, title=None):
             _pp(('Recipient', tx.get('tx', {}).get('recipient')), prefix='   ')
             _pp(('Amount', tx.get('tx', {}).get('amount')), prefix='   ')
 
-##Prints info
 def _p_tx(tx):
-    """Print info of a transactions"""
+    """Python program for retrieving essentials"""
     _pp([
         ('Block hash', tx.get('block_hash')),
         ('Block height', tx.get('block_height')),
