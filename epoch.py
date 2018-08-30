@@ -1,9 +1,12 @@
+## IMPORT MODULES
 import json
 from collections import defaultdict
 import logging
 
 import time
 import websocket
+# Websocket is a module that allows for two way communication between browser and server. 
+#The websocket API allows the user to send messages too server, and the user to recieve event driven responses.
 
 from aeternity import __version__
 from aeternity.config import Config
@@ -15,10 +18,11 @@ from aeternity.config import DEFAULT_TX_TTL, DEFAULT_FEE, PARAM_DEFAULT_ENCODING
 import deprecation
 
 logger = logging.getLogger(__name__)
-
+"""logger is a module-level function, that references the same logger function"""
 
 class Connection:
     def __init__(self, config):
+        """__init__ current version of aeternity"""
         self.config = config
         self.websocket = None
 
@@ -231,9 +235,9 @@ class EpochClient:
 
         To get a balance of the past use either the `height` or `hash` parameters
 
-        :param account_pubkey:
-        :param height:
-        :param block_hash:
+        :parameter account_pubkey:
+        :parameter height:
+        :parameter block_hash:
         :return:
         """
         assert not (height is not None and block_hash is not None), "Can only set either height or hash!"
@@ -256,7 +260,7 @@ class EpochClient:
 
     def get_info(self):
         return self.cli.get_info()
-        #Why is self. in line 211 to 259 have no members??? 
+        #Why does self. in line 211 to 259 have no members??? 
 
     def get_peers(self):
         # this is a debugging function
@@ -287,8 +291,8 @@ class EpochClient:
     def get_transaction_by_transaction_hash(self, tx_hash, tx_encoding=PARAM_DEFAULT_ENCODING):
         """
         Retrieve a transaction by its hash
-        :param tx_hash: the hash of the transaction
-        :param tx_encoding: the encoding of the reply
+        :parameter tx_hash: the hash of the transaction
+        :parameter tx_encoding: the encoding of the reply
         """
         assert tx_hash.startswith('th$'), 'A transaction hash must start with "th$"'
         return self.cli.get_tx(tx_hash=tx_hash, tx_encoding=tx_encoding)
@@ -305,10 +309,10 @@ class EpochClient:
     def create_spend_transaction(self, sender_pubkey, recipient_pubkey, amount, tx_ttl=DEFAULT_TX_TTL, fee=DEFAULT_FEE, nonce=0, payload="payload"):
         """
         create a spend transaction
-        :param sender: the public key of the sender
-        :param recipient: the public key of the recipient
-        :param amount: the amount to send
-        :param fee: the fee for the transaction
+        :parameter sender: the public key of the sender
+        :paramater recipient: the public key of the recipient
+        :paramater amount: the amount to send
+        :paramater fee: the fee for the transaction
         """
         # compute the absolute ttl
         ttl = self.compute_absolute_ttl(tx_ttl)
